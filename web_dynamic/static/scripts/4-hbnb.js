@@ -18,7 +18,7 @@ $(document).ready(function () {
       type: 'POST',
       url: `http://${window.location.hostname}:5001/api/v1/places_search/`,
       contentType: 'application/json',
-      data: JSON.stringify({}),
+      data: JSON.stringify({'amenities':Object.keys(amenityIds)}),
       success: function (data) {
         $('section.places').empty();
 
@@ -68,7 +68,6 @@ $(document).ready(function () {
     const amenitiesList = Object.values(amenityIds).join(', ');
     $('.amenities h4').text(amenitiesList);
 
-    updatePlaces();
   });
 
   $('button').click(function () {
